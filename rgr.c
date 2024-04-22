@@ -18,6 +18,11 @@ result find_occurrences(char* s1, char* s2)
 	unsigned int s1_len = my_strlen(s1);
 	unsigned int s2_len = my_strlen(s2);
 
+	if (s1[0] == ' ')
+		for (int i = 0; i < s1_len; ++i) s1[i] = s1[i + 1];
+
+	void kostil2 = realloc(s1, s1_len - 1 * sizeof(char));
+
 	answer.where = calloc((s1_len / s2_len) + 1, sizeof(int));
 	if (answer.where == NULL) { printf("memmory allocation error(answer.where)"); return answer; }
 
