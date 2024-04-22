@@ -14,16 +14,16 @@ unsigned int my_strlen(const char* str_)
 result find_occurrences(char* s1, char* s2)
 {
 	result answer;
-	answer.amount = 0;                   //bvgd
+	answer.amount = 0;                   
 	unsigned int s1_len = my_strlen(s1);
 	unsigned int s2_len = my_strlen(s2);
 
 	if (s1[0] == '\n')
-		for (int i = 0; i < s1_len+1/* длинна без учёта \0*/; ++i) s1[i] = s1[i + 1];
+		for (unsigned int i = 0; i < s1_len+1/* длинна без учёта \0*/; ++i) s1[i] = s1[i + 1];
 
 	void* kostil2 = realloc(s1, s1_len - 1 * sizeof(char));
 
-	answer.where = calloc((s1_len / s2_len) + 1, sizeof(int));
+	answer.where = calloc(((unsigned int)s1_len / s2_len) + 1, sizeof(int));
 	if (answer.where == NULL) { printf("memmory allocation error(answer.where)"); return answer; }
 
 	int len1 = 0;
@@ -81,11 +81,11 @@ result* rgr(char* name)
 		int counter1 = 0;
 		int counter2 = 0;
 		char simb;
-		for (simb = getc(file); simb != ' '; simb = getc(file))							//узнавание длинны 1ого слова 
+		for (simb = getc(file); simb != ' ' ; simb = getc(file))			//узнавание длинны 1ого слова 
 			counter1++;
 		
 		
-		for (simb = lastsimb = getc(file); simb != ' '; simb = lastsimb = getc(file))   //узнавание длинны 2ого слова
+		for (simb = lastsimb = getc(file);simb!='\n'; simb = lastsimb = getc(file))   //узнавание длинны 2ого слова
 			counter2++;
 
 		char* s1 = malloc(sizeof(char) * counter1);										//выделение памяти для первого слова из пары
@@ -95,9 +95,7 @@ result* rgr(char* name)
 			if (s2 == NULL) { printf("s2 memmory allocation error"); return NULL; }
 
 		
-			/*for (int i = 0; fscanf(file, "%s %s", s1, s2) == 2;++i) {
-				answers[i] = find_occurrences(s1, s2);
-			}*/
+		if(answers!=NULL)
 			for (int i = 0; fscanf(file, "%s %s", s1, s2) == 2; ++i) {
 				answers[i] = find_occurrences(s1, s2); 
 			}
