@@ -21,7 +21,7 @@ result find_occurrences(char* s1, char* s2)
 	if (s1[0] == ' ')
 		for (int i = 0; i < s1_len; ++i) s1[i] = s1[i + 1];
 
-	void kostil2 = realloc(s1, s1_len - 1 * sizeof(char));
+	void* kostil2 = realloc(s1, s1_len - 1 * sizeof(char));
 
 	answer.where = calloc((s1_len / s2_len) + 1, sizeof(int));
 	if (answer.where == NULL) { printf("memmory allocation error(answer.where)"); return answer; }
@@ -49,7 +49,6 @@ result find_occurrences(char* s1, char* s2)
 			answer.amount++;
 			i += len2 - 1;
 		}
-		
 	}
 	for (int i = 1; i < answer.amount; ++i)
 	{
