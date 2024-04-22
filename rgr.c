@@ -14,12 +14,12 @@ unsigned int my_strlen(const char* str_)
 result find_occurrences(char* s1, char* s2)
 {
 	result answer;
-	answer.amount = 0;
+	answer.amount = 0;                   //bvgd
 	unsigned int s1_len = my_strlen(s1);
 	unsigned int s2_len = my_strlen(s2);
 
-	if (s1[0] == ' ')
-		for (int i = 0; i < s1_len; ++i) s1[i] = s1[i + 1];
+	if (s1[0] == '\n')
+		for (int i = 0; i < s1_len+1/* длинна без учёта \0*/; ++i) s1[i] = s1[i + 1];
 
 	void* kostil2 = realloc(s1, s1_len - 1 * sizeof(char));
 
@@ -28,10 +28,10 @@ result find_occurrences(char* s1, char* s2)
 
 	int len1 = 0;
 	int len2 = 0;
-	while (s1[len1] != '0') {
+	while (s1[len1] != '\0') {
 		len1++;
 	}
-	while (s2[len2] != '0') {
+	while (s2[len2] != '\0') {
 		len2++;
 	}
 	
@@ -95,10 +95,12 @@ result* rgr(char* name)
 			if (s2 == NULL) { printf("s2 memmory allocation error"); return NULL; }
 
 		
-			for (int i = 0; fscanf(file, "%s %s", s1, s2) == 2;++i) {
+			/*for (int i = 0; fscanf(file, "%s %s", s1, s2) == 2;++i) {
 				answers[i] = find_occurrences(s1, s2);
+			}*/
+			for (int i = 0; fscanf(file, "%s %s", s1, s2) == 2; ++i) {
+				answers[i] = find_occurrences(s1, s2); 
 			}
-
 		
 	}
 	fclose(file);
