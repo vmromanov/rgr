@@ -74,7 +74,7 @@ result* rgr(char* name)
 				if (found == 1) 
 				{
 					position = k;
-					answers[i].where[amount] = k;
+					answers[i].where[amount] = position;
 					amount+=1;
 					k += counter2 -1;
 				}
