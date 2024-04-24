@@ -23,7 +23,7 @@ result* rgr(char* name)
 	int maxlen = 0;
 	char c;
 	int counterm = 0;
-	while (c = fgetc(file) != EOF) 
+	while ((c = fgetc(file)) != EOF) 
 	{
 		counterm = 0;
 		while ((c = fgetc(file) )!= ' ' && c != '\n' && c!='\0' && c!= EOF)
