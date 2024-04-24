@@ -1,5 +1,11 @@
 #pragma once
 typedef struct result{
-	int amount;
-	int* where;
+	unsigned int amount;
+	unsigned int* where;
 }result;
+
+
+
+result* rgr(char* name);
+
+

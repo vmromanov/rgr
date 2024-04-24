@@ -4,10 +4,8 @@
 int main()
 {
 	char name[] = "rgr.txt";
-
-
-
-	return 0;
+	result* res = rgr(name);
+	
 }
 
 
