@@ -3,7 +3,8 @@
 
 int main()
 {
-	char name[] = "rgr.txt";
+	printf("enter file name");
+	char name[1000]; scanf("%c",name);
 	result* res = rgr(name);
 	
 }
